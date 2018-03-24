@@ -4,11 +4,6 @@ El objetivo de este lab es tener un primer contacto con la interfaz del kernel m
 
 El lab consiste en la implementación de versiones simplificadas de las herramientas Unix más comunes provistas en cualquier distribución: _ls_, _cat_, _rm_, _cp_, _mv_, etc.
 
-Enlaces recomendados:
-
-  - el [régimen de cursada](../regimen.md), donde se explica la notación ☆/★
-  - las [instrucciones de entrega](../entregas.md) en papel.
-
 ## Syscalls UNIX
 
 Se debe implementar cada ejercicio usando las syscalls Unix apropiadas, evitando el uso de las “funciones de alto nivel” que proporciona la biblioteca estándar de C. Así, por ejemplo, para la apertura de archivos se debe usar la syscall `open(2)`, y no la función `fopen(3)`.
