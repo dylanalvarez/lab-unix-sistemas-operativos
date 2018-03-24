@@ -1,3 +1,5 @@
+# Compilación: `cmake CMakeLists.txt && make`
+
 # Lab Unix
 
 El objetivo de este lab es tener un primer contacto con la interfaz del kernel mediante syscalls tradicionales de Unix, en particular las relacionadas al manejo de archivos.
