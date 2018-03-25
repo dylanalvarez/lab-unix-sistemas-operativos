@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(lab-unix-1)
+project(lab-unix)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wall -Wextra -Wpedantic -std=c11")
 set(CMAKE_VERBOSE_MAKEFILE ON)
