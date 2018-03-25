@@ -6,3 +6,4 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 add_executable(rm0.bin rm0/main.c)
 add_executable(cat0.bin cat0/main.c)
+add_executable(touch0.bin touch0/main.c)

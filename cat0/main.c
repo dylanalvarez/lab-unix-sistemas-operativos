@@ -4,14 +4,12 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <errno.h>
-#include <string.h>
 #include <unistd.h>
 
 void cat0(const char *pathname) {
     int file_descriptor = open(pathname, 0);
-    if (errno) {
-        printf("%s", strerror(errno));
+    if (file_descriptor == -1) {
+        perror("");
         return;
     }
 
@@ -21,8 +19,8 @@ void cat0(const char *pathname) {
     while (read_count) {
         read_count = read(file_descriptor, buffer, BUFFER_SIZE);
         if (read_count < 0) {
-            printf("%s", strerror(errno));
-            if (close(file_descriptor)) { printf("%s", strerror(errno)); }
+            perror("");
+            if (close(file_descriptor)) { perror(""); }
             return;
         }
 
@@ -32,14 +30,14 @@ void cat0(const char *pathname) {
                                   buffer + written_count,
                                   (size_t) (read_count - written_count));
             if (written_count < 0) {
-                printf("%s", strerror(errno));
-                if (close(file_descriptor)) { printf("%s", strerror(errno)); }
+                perror("");
+                if (close(file_descriptor)) { perror(""); }
                 return;
             }
         }
     }
 
-    if (close(file_descriptor)) { printf("%s", strerror(errno)); }
+    if (close(file_descriptor)) { perror(""); }
 }
 
 int main(int argc, char *argv[]) {
