@@ -1,7 +1,8 @@
 #define _POSIX_C_SOURCE 200809L
 
-#include <unistd.h>
+#include <fcntl.h>
 #include <stdio.h>
+#include <sys/stat.h>
 
 const char *file_name(const char *pathname) {
     int file_name_position = 0;
@@ -11,15 +12,19 @@ const char *file_name(const char *pathname) {
     return pathname + file_name_position;
 }
 
-void rm0(const char *pathname) {
-    if (unlink(pathname) == -1) {
-        fprintf(stderr, "rm: cannot remove '%s': ", file_name(pathname));
+void stat0(const char *pathname) {
+    struct stat info;
+    if (stat(pathname, &info) == -1) {
         perror("");
         return;
     }
+    printf("Size: %d\nFile: %s\nType: %s",
+           (int) info.st_size,
+           file_name(pathname),
+           S_ISREG(info.st_mode) ? "regular file" : "directory");
 }
 
 int main(int argc, char *argv[]) {
-    rm0(argv[1]);
+    stat0(argv[1]);
     return argc & 0;
 }
