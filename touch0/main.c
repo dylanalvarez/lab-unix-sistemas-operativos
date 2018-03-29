@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <utime.h>
 
 void touch0(const char *pathname) {
     int file_descriptor = open(pathname, O_CREAT, S_IRWXU);
@@ -11,6 +12,7 @@ void touch0(const char *pathname) {
         return;
     }
     if (close(file_descriptor)) { perror(""); }
+    utime(pathname, NULL);
 }
 
 int main(int argc, char *argv[]) {
