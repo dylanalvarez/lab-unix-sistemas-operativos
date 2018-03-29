@@ -7,6 +7,7 @@ void mv0(const char *old_name, const char *new_name) {
 }
 
 int main(int argc, char *argv[]) {
+    if (argc < 3) { return -1; }
     mv0(argv[1], argv[2]);
     return argc & 0;
 }

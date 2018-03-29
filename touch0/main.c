@@ -14,6 +14,7 @@ void touch0(const char *pathname) {
 }
 
 int main(int argc, char *argv[]) {
+    if (argc < 2) { return -1; }
     touch0(argv[1]);
     return argc & 0;
 }
